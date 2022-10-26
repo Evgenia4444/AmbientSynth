@@ -1,0 +1,182 @@
+@font-face {
+  font-family: Starsight;
+  src: url(starsight.ttf);
+}
+
+h1 {
+  color: white;
+  font-size: 48px;
+  font-family: Starsight;
+}
+
+.prototype_body_14 {
+  background: #030303;
+}
+
+#prototype_14 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 33px;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+
+  .Container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  justify-content: space-between;
+  
+    .header {
+     text-align: center;
+    }
+   // & > 
+    
+  }
+}
+
+.ToneSynth {
+  padding: 16px 24px;
+  background: #1F1F1F;
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+.wrapper {
+  color: #bebebe;
+  display: flex;
+  flex-direction: row;
+  
+    justify-content: space-between;
+    // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 20px;
+    // border-color: 4px solid #9FAAC9;
+}
+.SC_Slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 8px;
+
+  h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  input[type='range'] {
+    -webkit-appearance: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    width: 100%;
+
+    &::-webkit-slider-runnable-track {
+      height: 4px;
+      background: rgba(149, 157, 165, 0.2);
+      border: none;
+      box-shadow: rgba(149, 157, 165, 0.2);
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      border: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #7438ff;
+      margin-top: -6px;
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::-webkit-slider-runnable-track {
+        background: rgba(149, 157, 165, 0.2);
+      }
+    }
+  }
+}
+
+.SC_Button{
+  width: 100%;
+  height: 265px;
+  border-radius: 20px;
+  // margin: auto;
+  margin-bottom: 20px;
+  color: white;
+ background-color:#99fff3;
+background-image:
+radial-gradient(at 80% 59%, hsla(247,85%,62%,1) 0px, transparent 50%),
+radial-gradient(at 1% 47%, hsla(101,71%,64%,1) 0px, transparent 50%),
+radial-gradient(at 6% 40%, hsla(120,76%,70%,1) 0px, transparent 50%),
+radial-gradient(at 67% 62%, hsla(224,73%,75%,1) 0px, transparent 50%),
+radial-gradient(at 83% 29%, hsla(181,91%,64%,1) 0px, transparent 50%),
+radial-gradient(at 91% 67%, hsla(99,96%,68%,1) 0px, transparent 50%),
+radial-gradient(at 0% 60%, hsla(19,99%,68%,1) 0px, transparent 50%);
+  font-family: Starsight; 
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  align-content: center;
+  font-size: 64px;
+  line-height: 150px;
+}
+
+.SC_ToggleButton {
+
+  padding: 8px 48px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  text-transform: capitalize;
+  background-color: black;
+  color: #9FAAC9;
+  // border: 1px solid #9FAAC9;
+  // border: 8px #9FAAC9;
+  margin-bottom: 8px;
+  cursor: pointer;
+
+  &:hover:not(.active) {
+    background-color: #171717;
+    // border: 1px solid #9FAAC9;
+  }
+
+  &.active {
+    font-weight: 800;
+    color: var(--white);
+    background-color:#99fff3;
+    background-image:
+    radial-gradient(at 80% 59%, hsla(247,85%,62%,1) 0px, transparent 50%),
+    radial-gradient(at 1% 47%, hsla(101,71%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 6% 40%, hsla(120,76%,70%,1) 0px, transparent 50%),
+    radial-gradient(at 67% 62%, hsla(224,73%,75%,1) 0px, transparent 50%),
+    radial-gradient(at 83% 29%, hsla(181,91%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 91% 67%, hsla(99,96%,68%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 60%, hsla(19,99%,68%,1) 0px, transparent 50%);
+    cursor: default;
+  }
+}
+
+.fullLengthButton{
+  width: 100%;
+  height: 120px;
+}
+
+.firstSynthContainer,
+.secondSynthContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 48%;
+
+}
+
+.SC_ToggleButtonSetElements{
+  display: flex;
+  justify-content: space-between;
+}
+
