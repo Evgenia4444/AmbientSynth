@@ -10,7 +10,7 @@ h1 {
 }
 
 .prototype_body_14 {
-  background: #030303;
+  background: #202038;
 }
 
 #prototype_14 {
@@ -39,7 +39,7 @@ h1 {
 
 .ToneSynth {
   padding: 16px 24px;
-  background: #1F1F1F;
+  background: #27273F;
   border-radius: 16px;
   margin-bottom: 32px;
 }
@@ -69,8 +69,9 @@ h1 {
 
   input[type='range'] {
     -webkit-appearance: none;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 16px;
+    border-radius: 16px;
+    background: #35364B;
     width: 100%;
 
     &::-webkit-slider-runnable-track {
@@ -83,11 +84,11 @@ h1 {
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       border: none;
-      height: 16px;
-      width: 16px;
+      height: 20px;
+      width: 20px;
       border-radius: 50%;
       background: #7438ff;
-      margin-top: -6px;
+      margin-top: -8px;
       cursor: pointer;
     }
 
@@ -133,7 +134,7 @@ radial-gradient(at 0% 60%, hsla(19,99%,68%,1) 0px, transparent 50%);
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   text-transform: capitalize;
-  background-color: black;
+  background-color: #35364B;
   color: #9FAAC9;
   // border: 1px solid #9FAAC9;
   // border: 8px #9FAAC9;
@@ -141,8 +142,8 @@ radial-gradient(at 0% 60%, hsla(19,99%,68%,1) 0px, transparent 50%);
   cursor: pointer;
 
   &:hover:not(.active) {
-    background-color: #171717;
-    // border: 1px solid #9FAAC9;
+    background-color: #27273F;
+ 
   }
 
   &.active {
@@ -174,6 +175,13 @@ radial-gradient(at 0% 60%, hsla(19,99%,68%,1) 0px, transparent 50%);
   width: 48%;
 
 }
+
+.SC_ToggleButtonSetElements{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 
 .SC_ToggleButtonSetElements{
   display: flex;

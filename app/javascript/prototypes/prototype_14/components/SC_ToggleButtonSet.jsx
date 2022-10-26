@@ -30,7 +30,7 @@ export default class SC_ToggleButtonSet extends PureComponent {
     return (
       <div className="SC_ToggleButtonSet">
         <h3>{name}</h3>
-        <div>{buttonElements}</div>
+        <div className='SC_ToggleButtonSetElements'>{buttonElements}</div>
       </div>
     )
   }
