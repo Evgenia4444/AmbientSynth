@@ -41537,3 +41537,42 @@ Processing by PrototypesController#show as HTML
 Completed 200 OK in 18ms (Views: 12.6ms | ActiveRecord: 0.2ms | Allocations: 7104)
 
 
+Started GET "/prototypes/14" for ::1 at 2022-10-27 00:49:24 +0300
+Processing by PrototypesController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mPrototype Load (0.6ms)[0m  [1m[34mSELECT "prototypes".* FROM "prototypes" WHERE "prototypes"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/prototypes_controller.rb:63:in `set_prototype'
+  Rendering layout layouts/application.html.erb
+  Rendering prototypes/show.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered prototypes/show.html.erb within layouts/application (Duration: 19.1ms | Allocations: 3511)
+  Rendered layout layouts/application.html.erb (Duration: 72.3ms | Allocations: 25710)
+Completed 200 OK in 81ms (Views: 75.3ms | ActiveRecord: 0.6ms | Allocations: 26580)
+
+
+Started GET "/prototypes/14" for ::1 at 2022-10-27 00:49:33 +0300
+Processing by PrototypesController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mPrototype Load (0.1ms)[0m  [1m[34mSELECT "prototypes".* FROM "prototypes" WHERE "prototypes"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/prototypes_controller.rb:63:in `set_prototype'
+  Rendering layout layouts/application.html.erb
+  Rendering prototypes/show.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered prototypes/show.html.erb within layouts/application (Duration: 16.7ms | Allocations: 3511)
+  Rendered layout layouts/application.html.erb (Duration: 40.4ms | Allocations: 23211)
+Completed 200 OK in 46ms (Views: 40.8ms | ActiveRecord: 0.1ms | Allocations: 24082)
+
+
+Started GET "/prototypes/14" for ::1 at 2022-10-27 00:49:38 +0300
+Processing by PrototypesController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mPrototype Load (0.1ms)[0m  [1m[34mSELECT "prototypes".* FROM "prototypes" WHERE "prototypes"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/prototypes_controller.rb:63:in `set_prototype'
+  Rendering layout layouts/application.html.erb
+  Rendering prototypes/show.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered prototypes/show.html.erb within layouts/application (Duration: 15.3ms | Allocations: 3511)
+  Rendered layout layouts/application.html.erb (Duration: 18.4ms | Allocations: 6502)
+Completed 200 OK in 26ms (Views: 18.7ms | ActiveRecord: 0.1ms | Allocations: 7373)
+
+
