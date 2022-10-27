@@ -8,11 +8,13 @@ import * as drumsSettings from './tunes/drums'
 import * as birdsSettings from './tunes/birds'
 import * as forestSettings from './tunes/forest'
 import * as oceanSettings from './tunes/ocean'
+import * as fireSettings from './tunes/fire'
 
 import ToneSynth from './modules/ToneSynth'
 import CalmSounds from './modules/CalmSounds'
 import Widener from './modules/Widener'
 import HigherSounds from './modules/HigherSounds'
+import VibratoSound from './modules/VibratoSound'
 import SC_Button from './components/SC_Button'
 import SC_Slider from './components/SC_Slider'
 
@@ -50,6 +52,17 @@ let oceanStereoWidener
 let oceanTremolo
 let oceanPitchShift
 
+let fireSynth
+let firePingPongDelay
+let fireDistortion
+let fireAutoWah
+let fireAutoFilter
+let fireStereoWidener
+let fireTremolo
+let firePitchShift
+let fireVibrato
+let fireJcReverb
+
 export default class Container extends Component {
   constructor(props) {
     super(props)
@@ -62,13 +75,14 @@ export default class Container extends Component {
       bassSettings,
       melodySettings,
       forestSettings,
-      oceanSettings
+      oceanSettings, 
+      fireSettings
    
     }
   }
 
   handleStart = () => {
-    const { bassSettings, melodySettings, forestSettings, oceanSettings } = this.state
+    const { bassSettings, melodySettings, forestSettings, oceanSettings, fireSettings } = this.state
 
     //
     //
@@ -178,6 +192,37 @@ export default class Container extends Component {
 
     oceanPart.loopEnd = oceanSettings.sequence.duration
     oceanPart.loop = true
+    
+    //
+
+    //
+    //
+    fireSynth = new Tone.Synth(fireSettings.synth)
+    fireDistortion = new Tone.Distortion(fireSettings.distortion)
+    fireAutoWah = new Tone.AutoWah(fireSettings.autoWah)
+    fireAutoFilter = new Tone.AutoFilter(fireSettings.autoFilter).start()
+    firePingPongDelay = new Tone.PingPongDelay(
+      fireSettings.pingPongDelay
+    ).toDestination()
+    fireStereoWidener = new Tone.StereoWidener(fireSettings.stereoWidener)
+    fireTremolo = new Tone.Tremolo(fireSettings.tremolo)
+    firePitchShift = new Tone.PitchShift(fireSettings.pitchShift)
+    fireVibrato = new Tone.Vibrato(fireSettings.vibrato)
+    fireJcReverb = new Tone.JCReverb(fireSettings.jcReverb)
+    fireSynth.chain( fireDistortion, fireAutoWah, fireAutoFilter, fireStereoWidener, 
+                       fireTremolo, firePitchShift, fireVibrato, fireJcReverb, firePingPongDelay)
+
+    const firePart = new Tone.Part((time, note) => {
+      fireSynth.triggerAttackRelease(
+        note.noteName,
+        note.duration,
+        time,
+        note.velocity
+      )
+    }, fireSettings.sequence.steps).start(0)
+
+    firePart.loopEnd = fireSettings.sequence.duration
+    firePart.loop = true
     //
     //
 
@@ -410,13 +455,65 @@ export default class Container extends Component {
   }
 
 
+  handleFireValueChange = (property, value) => {
+    const { fireSettings } = this.state
+
+    if (property === 'synthType') {
+      fireSynth.oscillator.type = value
+      fireSettings.synth.oscillator.type = value
+    } else if (property === 'synthEnvelopeAttack') {
+      fireSynth.envelope.attack = value
+      fireSettings.synth.envelope.attack = value
+    } else if (property === 'synthEnvelopeDecay') {
+      fireSynth.envelope.decay = value
+      fireSettings.synth.envelope.decay = value
+    } else if (property === 'synthEnvelopeSustain') {
+      fireSynth.envelope.sustain = value
+      fireSettings.synth.envelope.sustain = value
+    } else if (property === 'synthEnvelopeRelease') {
+      fireSynth.envelope.release = value
+      fireSettings.synth.envelope.release = value
+    }else if (property === 'pingPongDelayWet') {
+      firePingPongDelay.wet.value = value
+      fireSettings.pingPongDelay.wet = value
+    } else if (property === 'chorusWet') {
+      fireChorus.wet.value = value
+      fireSettings.chorus.wet = value
+    } else if (property === 'distortionWet') {
+      fireDistortion.wet.value = value
+      fireSettings.distortion.wet = value
+    } else if (property === 'autoWahWet') {
+      fireAutoWah.wet.value = value
+      fireSettings.autoWah.wet = value
+    } else if (property === 'autoFilterWet') {
+      fireAutoFilter.wet.value = value
+      fireSettings.autoFilter.wet = value
+    } else if (property === 'pitchShiftWet') {
+      firePitchShift.wet.value = value
+      fireSettings.pitchShift.wet = value
+    } else if (property === 'vibratoWet') {
+      fireVibrato.wet.value = value
+      fireSettings.vibrato.wet = value
+    } else if (property === 'jcReverbWet') {
+      fireJcReverb.wet.value = value
+      fireSettings.jcReverb.wet = value
+    }
+
+    this.setState({
+      fireSettings
+    })
+  }
+
+
 
   render() {
-    const { bassSettings, melodySettings, forestSettings, oceanSettings } = this.state
+    const { bassSettings, melodySettings, forestSettings, oceanSettings, fireSettings } = this.state
 
 
     return (
       <div className="Container">
+
+
         {/* <div className='header'>
          <h1>Ambient Synth</h1>
         </div> */}
@@ -424,24 +521,24 @@ export default class Container extends Component {
             text="Ambient Synth"
             handleClick={this.handleStart}
           />
-
-
         <div className='wrapper'>
       
         <div className='firstSynthContainer'>
-
+          <h2>Fire</h2>
             <ToneSynth 
-              settings={bassSettings}
-              handleValueChange={this.handleBassValueChange} 
+              settings={fireSettings}
+              handleValueChange={this.handleFireValueChange} 
             />
-            <CalmSounds 
-               settings={bassSettings}
-               handleValueChange={this.handleBassValueChange}
+
+            <VibratoSound
+               settings={fireSettings}
+               handleValueChange={this.handleFireValueChange}
             />
 
         </div>
       
         <div className='secondSynthContainer'>
+        <h2>Wind</h2>
           <ToneSynth 
             settings={melodySettings}
             handleValueChange={this.handleMelodyValueChange} 
@@ -457,7 +554,7 @@ export default class Container extends Component {
         <div className='wrapper'>
       
           <div className='firstSynthContainer'>
-
+          <h2>Forest</h2>
               <ToneSynth 
                 settings={forestSettings}
                 handleValueChange={this.handleForestValueChange} 
@@ -478,6 +575,7 @@ export default class Container extends Component {
           </div>
         
           <div className='secondSynthContainer'>
+          <h2>Ocean</h2>
               <ToneSynth 
                 settings={oceanSettings}
                 handleValueChange={this.handleOceanValueChange} 
